@@ -10,7 +10,8 @@
     "test_demo_edge_hd": "cross-env ENV_NAME=demo npx playwright test --project=edge --headed",
     "test_demo_chrome_hl": "cross-env ENV_NAME=demo npx playwright test --project=chromium",
     "test_demo_edge_hl": "cross-env ENV_NAME=demo npx playwright test --project=edge",
-    "test_demo_ui": "cross-env ENV_NAME=demo npx playwright test --ui"
+    "test_demo_ui": "cross-env ENV_NAME=demo npx playwright test --ui",
+    "test_api_demo": "cross-env ENV_NAME=demo npx playwright test --project=apiTest"
   },
   "keywords": [],
   "author": "",

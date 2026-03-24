@@ -1,5 +1,5 @@
-import { test, expect } from '../fixtures/hooks-fixture';
-import pimData from '../data/pim-module-data.json'
+import { test, expect } from '../../fixtures/hooks-fixture';
+import pimData from '../../data/ui-data/pim-module-data.json'
 
 test.describe("PIM Module Tests", () => {
     test('[PIM]verify that a new employee is successfully created under the PIM module', {
