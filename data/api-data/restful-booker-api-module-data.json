@@ -1,7 +1,7 @@
 {
     "content_type": "application/json; charset=utf-8",
     "bookingID": "2",
-    "bookingID2": "2",
+    "bookingID2": "1",
     "firstname":"Mark",
     "createBooking": {
     "firstname" : "TestBhu",
@@ -24,5 +24,9 @@
         "checkout" : "2026-01-01"
     },
     "additionalneeds" : "Breakfast"
+},
+"partialUpdateBooking":{
+    "firstname" : "James",
+    "lastname" : "Brown"
 }
 }
