@@ -78,14 +78,14 @@ test("PUT- Verify that the user is able to update a existing booking using PUT A
         expect(bookingjsonRespo).toMatchObject(restfulapiData.updateBooking);
     })
 
-test("PATCH - Verify that the user is able to partialy update a existing booking using PUT API and receive valid response",
+test("PATCH - Verify that the user is able to partialy update a existing booking using PATCH API and receive valid response",
     {
         tag: ['@SMOKE', '@HIGH LEVEL', '@REGRESSION'],
         annotation: { type: 'test case', description: 'test description' }
     }, async ({ request, commonApiUtils }) => {
         const tokenvalue = await commonApiUtils.createToken();
         console.log(tokenvalue);
-        const partialupdatebookingResp = await request.put(`${apiPathData.booking_path}/${restfulapiData.bookingID2}`, {
+        const partialupdatebookingResp = await request.patch(`${apiPathData.booking_path}/${restfulapiData.bookingID2}`, {
             headers: {
                 Cookie: `token=${tokenvalue}`
             },
@@ -101,3 +101,25 @@ test("PATCH - Verify that the user is able to partialy update a existing booking
         expect(partialbookingUpdatejsonRespo.firstname).toMatch(restfulapiData.partialUpdateBooking.firstname);
         expect(partialbookingUpdatejsonRespo.lastname).toMatch(restfulapiData.partialUpdateBooking.lastname);
     })    
+
+test("DELETE - Verify that the user is able to delete a existing booking using Delete API and receive valid response",
+    {
+        tag: ['@SMOKE', '@HIGH LEVEL', '@REGRESSION'],
+        annotation: { type: 'test case', description: 'test description' }
+    }, async ({ request, commonApiUtils }) => {
+        const tokenvalue = await commonApiUtils.createToken();
+        console.log(tokenvalue);
+        const deletebookingResp = await request.delete(`${apiPathData.booking_path}/${restfulapiData.bookingID3}`, {
+            headers: {
+                Cookie: `token=${tokenvalue}`
+            },
+            data: restfulapiData.partialUpdateBooking
+        });
+        console.log(deletebookingResp);
+        expect(deletebookingResp.status()).toBe(201);
+        expect(deletebookingResp.statusText()).toBe('Created');
+        
+        const getbookingResp = await request.get(`${apiPathData.booking_path}/${restfulapiData.bookingID3}`)
+        expect(getbookingResp.status()).toBe(404);
+        expect(getbookingResp.statusText()).toBe('Not Found');
+    })   
