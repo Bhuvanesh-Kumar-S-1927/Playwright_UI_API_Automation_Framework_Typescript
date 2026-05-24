@@ -29,7 +29,9 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: $env:SECRET_KEY="BhuviBot"; npm run test_demo_chrome_hl
+        run: |
+          export SECRET_KEY="BhuviBot"
+          npx playwright test
 
       - uses: actions/upload-artifact@v5
         if: ${{ !cancelled() }}
